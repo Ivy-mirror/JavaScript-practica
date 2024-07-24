@@ -1,28 +1,43 @@
-let valor1 = document.getElementById("valor1")
-let valor2 = document.getElementById("valor2")
+const button = document.getElementsByTagName("button")
+const input = document.getElementsByTagName("input")
 
-function suma (){
-  let resultadoSuma  = valor1 + valor2
+let valor1;
+let valor2;
 
-  if ( resultadoSuma >= 0 ) {
-      document.write("El resultado de la suma es: 0")
+let suma = function (valor1, valor2){
+  let resultado = valor1 + valor2
+  document.querySelector(".resultado").innerText = resultado;
+}
+
+function resta (valor1, valor2){
+  let resultado  = valor1 - valor2
+
+  if ( resultado <= 0 ) {
+      document.querySelector(".resultado").innerText = 0;
       
     } else {
-      document.write(`El resultado de la suma es: ${resultado}`)
+      document.querySelector(".resultado").innerText = resultado;
   }
 }
 
-
-function resta (){
-  let resultadoResta  = valor1 - valor2
-
-    if ( resultadoResta >= 0 ) {
-        document.write("El resultado de la resta es: 0")
-        
-      } else {
-        document.write(`El resultado de la resta es: ${resultado}`)
-    }
+function operation( i, valor1, valor2) {
+  switch(i){
+    case 0:
+      suma(valor1, valor2)
+      break;
+      case 1:
+        resta(valor1, valor2);
+        break;
+  }
 }
+for(let i = 0; i <button.length; i++) {
+  button[i].addEventListener("click", () => {
+    valor1 =Number(input[0].value);
+    valor2 =Number(input[1].value);
+    operacion(i, valor1, valor2);
+  }, false);
+}
+
 
 
 
